@@ -1,13 +1,14 @@
 magnets = 8; /* Magnets in holder */
-magnet_radius = 10; /* mm */
-magnet_height = 6; /* mm */
-wheel_diameter = cm_to_mm(60); /* cm */
-wheel_radius = wheel_diameter / 2;
+
+/* Parameters in mm */
+magnet_radius = 10;
+magnet_height = 2;
 thickness = 5; /* Extra thickness around magnets */
-hull_divider = 2; /* Amount to divide the hull by */
+wheel_diameter = 90;
+wheel_radius = wheel_diameter / 2;
 
+hull_divider = 1.25; /* Amount to divide the hull by */
 
-function cm_to_mm(cm) = cm * 10;
 
 module magnet_transform(i, x, radius)
 {
