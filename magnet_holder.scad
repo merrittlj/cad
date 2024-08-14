@@ -5,7 +5,7 @@ magnet_diameter = 10;
 magnet_radius = magnet_diameter / 2;
 magnet_height = 2;
 thickness = 3; /* Extra thickness around magnets */
-wheel_diameter = 90;
+wheel_diameter = 85;
 wheel_radius = wheel_diameter / 2;
 
 translation = wheel_radius - magnet_radius - thickness;
@@ -45,3 +45,7 @@ difference()
 	}
 }
 
+/* Wheel reference */
+/*translate([0, 0, -(60)]) {
+	cylinder(60, r = 45, true);
+}*/
