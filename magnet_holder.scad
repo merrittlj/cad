@@ -1,13 +1,16 @@
 magnets = 8; /* Magnets in holder */
 
 /* Parameters in mm */
-magnet_radius = 10;
+magnet_diameter = 10;
+magnet_radius = magnet_diameter / 2;
 magnet_height = 2;
-thickness = 5; /* Extra thickness around magnets */
+thickness = 3; /* Extra thickness around magnets */
 wheel_diameter = 90;
 wheel_radius = wheel_diameter / 2;
 
-hull_divider = 1.25; /* Amount to divide the hull by */
+translation = wheel_radius - magnet_radius - thickness;
+
+hull_divider = 3; /* Amount to divide the hull by */
 
 
 module magnet_transform(i, x, radius)
@@ -25,11 +28,11 @@ difference()
 	union()
 	{
 		for (i = [1:magnets]) {
-			magnet_transform(i, wheel_radius - magnet_radius, magnet_radius + thickness);
+			magnet_transform(i, translation, magnet_radius + thickness);
 			hull()
 			{
-				magnet_transform(i, wheel_radius - magnet_radius, (magnet_radius + thickness) / hull_divider);
-				magnet_transform(i + 1, wheel_radius - magnet_radius, (magnet_radius + thickness) / hull_divider);
+				magnet_transform(i, translation, (magnet_radius + thickness) / hull_divider);
+				magnet_transform(i + 1, translation, (magnet_radius + thickness) / hull_divider);
 			}
 		}
 	}
@@ -37,7 +40,7 @@ difference()
 	union()
 	{
 		for (i = [1:magnets]) {
-			magnet_transform(i, wheel_radius - magnet_radius, magnet_radius);
+			magnet_transform(i, translation, magnet_radius);
 		}
 	}
 }
