@@ -2,7 +2,7 @@ magnets = 8; /* Magnets in holder */
 
 /* Parameters in mm */
 magnet_diameter = 10;
-magnet_radius = magnet_diameter / 2;
+magnet_radius = (magnet_diameter / 2) + 0.1;
 magnet_height = 2;
 thickness = 3; /* Extra thickness around magnets */
 wheel_diameter = 85;
@@ -41,6 +41,8 @@ difference()
 	{
 		for (i = [1:magnets]) {
 			magnet_transform(i, translation, magnet_radius);
+			/* Open magnet rings */
+			/* magnet_transform(i, translation + thickness + magnet_radius, magnet_radius * 1.7); */
 		}
 	}
 }
